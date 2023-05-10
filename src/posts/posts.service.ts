@@ -1,16 +1,19 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { Post } from './post.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class PostsService {
-  // Método para reteornar los posts
-  findAll(): Post[] {
-    return [
-      {
-        id: 1,
-        title: 'Hello World',
-        content: 'This is a sample post',
-      },
-    ];
+  // Inyección de dependencias
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  constructor(
+    @InjectRepository(Post) private postsRepository: Repository<Post>,
+  ) {}
+
+  // Método para retornar los posts
+  async findAll(): Promise<Post[]> {
+    const posts = await this.postsRepository.find();
+    return posts;
   }
 }
