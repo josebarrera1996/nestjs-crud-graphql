@@ -11,9 +11,13 @@ type Post {
 type Query {
   """Retornará un listado de posts"""
   posts: [Post!]!
+
+  """Retornará un post"""
+  post(productId: Int!): Post!
 }
 
 type Mutation {
+  """Creará un nuevo post"""
   createPost(postInput: CreatePostInput!): Post!
 }
 

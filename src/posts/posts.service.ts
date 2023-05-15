@@ -18,6 +18,15 @@ export class PostsService {
     return posts;
   }
 
+  // Método para retornar a un post en específico (gracias a su ID)
+  async findById(id: number): Promise<Post> {
+    return this.postsRepository.findOne({
+      where: {
+        id,
+      },
+    });
+  }
+
   // Método para crear un nuevo post
   // Implementando un DTO
   createPost(post: CreatePostInput): Promise<Post> {
