@@ -2,10 +2,18 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Author {
+  id: Int!
+  name: String!
+  posts: [Post!]
+}
+
 type Post {
   id: Int!
   title: String!
   content: String
+  authorId: Int!
+  author: Author!
 }
 
 type Query {
@@ -13,15 +21,40 @@ type Query {
   posts: [Post!]!
 
   """Retornará un post"""
-  post(productId: Int!): Post!
+  post(id: Int!): Post!
+  authors: [Author!]!
+  author(id: Int!): Author!
 }
 
 type Mutation {
   """Creará un nuevo post"""
   createPost(postInput: CreatePostInput!): Post!
+
+  """Actualizará un post existente"""
+  updatePost(id: Int!, updateInput: UpdatePostInput!): Post!
+
+  """Se eliminará un post"""
+  deletePost(id: Int!): Boolean!
+  createAuthor(createAuthorInput: CreateAuthorInput!): Author!
+  updateAuthor(id: Int!, updateAuthorInput: UpdateAuthorInput!): Author!
+  removeAuthor(id: Int!): Boolean!
 }
 
 input CreatePostInput {
   title: String!
   content: String
+  authorId: Float!
+}
+
+input UpdatePostInput {
+  title: String!
+  content: String
+}
+
+input CreateAuthorInput {
+  name: String!
+}
+
+input UpdateAuthorInput {
+  name: String!
 }

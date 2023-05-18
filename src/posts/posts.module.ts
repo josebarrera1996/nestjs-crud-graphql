@@ -3,9 +3,10 @@ import { PostsService } from './posts.service';
 import { PostsResolver } from './posts.resolver';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Post } from './post.entity';
+import { AuthorsModule } from 'src/authors/authors.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Post])], // Integrando TypeORM
+  imports: [TypeOrmModule.forFeature([Post]), AuthorsModule], // Integrando TypeORM y AuthorsModule
   providers: [PostsService, PostsResolver],
 })
 export class PostsModule {}

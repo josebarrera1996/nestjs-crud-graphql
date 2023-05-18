@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Author } from 'src/authors/entities/author.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 
 // Definiedno la entidad 'Post'
 @Entity({ name: 'Posts' })
@@ -19,4 +20,13 @@ export class Post {
   @Column({ nullable: true })
   @Field({ nullable: true })
   content?: string;
+
+  @Column()
+  @Field(() => Int)
+  authorId: number;
+
+  // Relación 'Muchos a 1' (muchas publicaciones pueden pertenercer a un autor)
+  @ManyToOne(() => Author, (author) => author.posts)
+  @Field(() => Author)
+  author: Author;
 }
