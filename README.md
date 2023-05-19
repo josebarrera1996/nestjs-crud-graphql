@@ -24,7 +24,19 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Este repositorio es producto de haber seguido un video en el canal de Fazt.
+
+El mismo es el siguiente:
+
+* Título: Nestjs GraphQL TypeORM (con SQlite3 y Relaciones de SQL)
+* Link -> https://www.youtube.com/watch?v=ms0WcT2MJg4
+
+El **Stack** es el siguiente:
+
+* Nestjs
+* GraphQL
+* TypeORM
+* SQlite3
 
 ## Installation
 
